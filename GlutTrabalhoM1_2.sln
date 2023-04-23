@@ -7,10 +7,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GlutTrabalhoM1_2", "TesteIn
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Iluminacao|x64 = Iluminacao|x64
 		LeituradeArquivos|x64 = LeituradeArquivos|x64
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AE40793B-B4C1-4404-9537-034FD8BE85C6}.Iluminacao|x64.ActiveCfg = Iluminacao|x64
+		{AE40793B-B4C1-4404-9537-034FD8BE85C6}.Iluminacao|x64.Build.0 = Iluminacao|x64
 		{AE40793B-B4C1-4404-9537-034FD8BE85C6}.LeituradeArquivos|x64.ActiveCfg = LeituradeArquivos|x64
 		{AE40793B-B4C1-4404-9537-034FD8BE85C6}.LeituradeArquivos|x64.Build.0 = LeituradeArquivos|x64
 		{AE40793B-B4C1-4404-9537-034FD8BE85C6}.Release|x64.ActiveCfg = Release|x64
