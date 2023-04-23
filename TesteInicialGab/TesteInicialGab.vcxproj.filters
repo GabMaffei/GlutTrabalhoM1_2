@@ -13,30 +13,10 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Arquivos de Recurso\data">
-      <UniqueIdentifier>{dbdd2dd5-7955-493f-a08f-c10cc355e22a}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GlutTrabalhoM1_2.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Object Include="data\elepham.obj">
-      <Filter>Arquivos de Recurso\data</Filter>
-    </Object>
-    <Object Include="data\mba1.obj">
-      <Filter>Arquivos de Recurso\data</Filter>
-    </Object>
-    <Object Include="data\porsche.obj">
-      <Filter>Arquivos de Recurso\data</Filter>
-    </Object>
-    <Object Include="data\teddy.obj">
-      <Filter>Arquivos de Recurso\data</Filter>
-    </Object>
-    <Object Include="data\radar.obj">
-      <Filter>Arquivos de Recurso\data</Filter>
-    </Object>
   </ItemGroup>
 </Project>

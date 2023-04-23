@@ -335,13 +335,6 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug3|x64'">true</ExcludedFromBuild>
     </ClCompile>
   </ItemGroup>
-  <ItemGroup>
-    <Object Include="data\elepham.obj" />
-    <Object Include="data\mba1.obj" />
-    <Object Include="data\porsche.obj" />
-    <Object Include="data\radar.obj" />
-    <Object Include="data\teddy.obj" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
