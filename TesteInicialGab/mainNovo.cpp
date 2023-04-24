@@ -293,8 +293,16 @@ int main(int argc, char** argv)
     glEnable(GL_LIGHT0);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    GLfloat posicao[] = { 0, 0, 1, 0 };
-    glLightfv(GL_LIGHT0, GL_POSITION, posicao);
+
+    GLfloat luzDifusa[] = { 0.8f, 0.8f, 0.8f, 1.0f };
+    GLfloat luzSpecular[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+    GLfloat luzPosicao[] = { 0, 0, 1, 0 };
+    GLfloat luzLocalview[] = { 0.0 };
+
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, luzDifusa);
+    glLightfv(GL_LIGHT0, GL_SPECULAR, luzSpecular);
+    glLightfv(GL_LIGHT0, GL_POSITION, luzPosicao);
+    glLightModelfv(GL_LIGHT_MODEL_LOCAL_VIEWER, luzLocalview);
 
     glPolygonMode(GL_FRONT, GL_FILL);
     glPolygonMode(GL_BACK, GL_LINE);
