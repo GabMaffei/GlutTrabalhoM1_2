@@ -117,6 +117,7 @@ vector< Vertex > LoadOBJ(istream& in)
     return verts;
 }
 
+// Movimento do Mouse
 int btn;
 ivec2 startMouse;
 ivec2 startRot, curRot;
@@ -151,7 +152,8 @@ void motion(int x, int y)
     glutPostRedisplay();
 }
 
-vector< Vertex > model;
+// Renderizar
+vector< Vertex > modelo;
 void display()
 {
     glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
@@ -179,10 +181,10 @@ void display()
         glEnableClientState(GL_VERTEX_ARRAY);
         glEnableClientState(GL_TEXTURE_COORD_ARRAY);
         glEnableClientState(GL_NORMAL_ARRAY);
-        glVertexPointer(3, GL_FLOAT, sizeof(Vertex), &model[0].posicao);
-        glTexCoordPointer(2, GL_FLOAT, sizeof(Vertex), &model[0].textura);
-        glNormalPointer(GL_FLOAT, sizeof(Vertex), &model[0].normal);
-        glDrawArrays(GL_TRIANGLES, 0, model.size());
+        glVertexPointer(3, GL_FLOAT, sizeof(Vertex), &modelo[0].posicao);
+        glTexCoordPointer(2, GL_FLOAT, sizeof(Vertex), &modelo[0].textura);
+        glNormalPointer(GL_FLOAT, sizeof(Vertex), &modelo[0].normal);
+        glDrawArrays(GL_TRIANGLES, 0, modelo.size());
         glDisableClientState(GL_VERTEX_ARRAY);
         glDisableClientState(GL_TEXTURE_COORD_ARRAY);
         glDisableClientState(GL_NORMAL_ARRAY);
@@ -196,9 +198,9 @@ void display()
     glutSwapBuffers();
 }
 
-// return the min/max points of pts
+// Retorna os pontos minimos e máximos
 template< typename Vec >
-pair< Vec, Vec > GetExtents(const Vec* pts, size_t stride, size_t count)
+pair< Vec, Vec > GetPontas(const Vec* pts, size_t stride, size_t count)
 {
     unsigned char* base = (unsigned char*)pts;
     Vec pmin(*(Vec*)base);
@@ -213,17 +215,16 @@ pair< Vec, Vec > GetExtents(const Vec* pts, size_t stride, size_t count)
     return make_pair(pmin, pmax);
 }
 
-// centers geometry around the origin
-// and scales it to fit in a size^3 box
+// Centraliza geometria no ponto de origem
 template< typename Vec >
-void CenterAndScale(Vec* pts, size_t stride, size_t count, const typename Vec::value_type& size)
+void Centralizar(Vec* pts, size_t stride, size_t count, const typename Vec::value_type& size)
 {
     typedef typename Vec::value_type Scalar;
 
-    // get min/max extents
-    pair< Vec, Vec > exts = GetExtents(pts, stride, count);
+    // obter extremidades máximas e minimas
+    pair< Vec, Vec > exts = GetPontas(pts, stride, count);
 
-    // center and scale 
+    // centralizar e colocar em escala
     const Vec center = (exts.first * Scalar(0.5)) + (exts.second * Scalar(0.5f));
 
     const Scalar factor = size / glm::compMax(exts.second - exts.first);
@@ -237,21 +238,22 @@ void CenterAndScale(Vec* pts, size_t stride, size_t count, const typename Vec::v
 
 int main(int argc, char** argv)
 {
+    // Ler arquivo
     ifstream ifile("data/radar.obj");
-    model = LoadOBJ(ifile);
-    CenterAndScale(&model[0].posicao, sizeof(Vertex), model.size(), 7);
+    modelo = LoadOBJ(ifile);
+    Centralizar(&modelo[0].posicao, sizeof(Vertex), modelo.size(), 7);
 
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGBA | GLUT_DEPTH | GLUT_DOUBLE);
     glutInitWindowSize(640, 480);
-    glutCreateWindow("OBJ");
+    glutCreateWindow("Janela");
     glutDisplayFunc(display);
     glutMouseFunc(mouse);
     glutMotionFunc(motion);
 
     glEnable(GL_DEPTH_TEST);
 
-    // set up "headlamp"-like light
+    // configurações de iluminação
     glShadeModel(GL_SMOOTH);
     glEnable(GL_COLOR_MATERIAL);
     glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
