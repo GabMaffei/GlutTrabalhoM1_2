@@ -118,46 +118,14 @@ vector< Vertex > LoadOBJ(istream& in)
 }
 
 // Entrada do teclado
-bool mais = false;
-bool menos = false;
-
 bool luz = true;
 
-bool menorT = false;
-bool maiorT = false;
 void keyboard(unsigned char key, int x, int y) {
     switch (key) {
     case 27: //Esc
         exit(0);
         break;
-    case 45: //menos
-        menos = true;
-        break;
-    case 43: //mais
-        mais = true;
-        break;
-    case 61: //igual (mais)
-        mais = true;
-        break;
-    case 60: //menor que
-        menorT = true;
-        break;
-    case 44: //menor que (vírgula)
-        menorT = true;
-        break;
-    case 101: //menor que (letra e)
-        menorT = true;
-        break;
-    case 62: //maior que
-        maiorT = true;
-        break;
-    case 46: //maior que (ponto)
-        maiorT = true;
-        break;
-    case 114: //maior que (letra r)
-        maiorT = true;
-        break;
-    }
+    };
 }
 
 void keyboardOnRelease(unsigned char key, int x, int y) {
@@ -165,34 +133,7 @@ void keyboardOnRelease(unsigned char key, int x, int y) {
     case 108: //letra l
         luz = luz ? false : true;
         break;
-    case 45: //menos
-        menos = false;
-        break;
-    case 43: //mais
-        mais = false;
-        break;
-    case 61: //igual
-        mais = false;
-        break;
-    case 60: //menor que
-        menorT = false;
-        break;
-    case 44: //menor que (vírgula)
-        menorT = false;
-        break;
-    case 101: //menor que (letra e)
-        menorT = false;
-        break;
-    case 62: //maior que
-        maiorT = false;
-        break;
-    case 46: //maior que (ponto)
-        maiorT = false;
-        break;
-    case 114: //maior que (letra r)
-        maiorT = false;
-        break;
-    }
+    };
 }
 
 // Movimento do Mouse
@@ -254,6 +195,9 @@ void display()
         // Mouse
         glRotatef(curRot.x % 360, 0, 1, 0);
         glRotatef(-curRot.y % 360, 1, 0, 0);
+        
+        // Teclado
+
 
         // Modelo - .obj
         glColor3ub(255, 0, 0);
