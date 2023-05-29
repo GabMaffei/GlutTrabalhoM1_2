@@ -53,7 +53,8 @@
       <AdditionalDependencies>freeglut.lib;opengl32.lib;glu32.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy $(ProjectDir)freeglut\bin\x64\freeglut.dll</Command>
+      <Command>copy $(ProjectDir)freeglut\bin\x64\freeglut.dll;
+copy $(ProjectDir)glew-2.1.0\bin\Release\x64\glew32.dll;</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
