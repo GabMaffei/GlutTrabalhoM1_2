@@ -1,3 +1,4 @@
+#include "glew.h"
 #include <GL/freeglut.h>
 #include "glm/glm.hpp"
 #include "glm/gtx/component_wise.hpp"
